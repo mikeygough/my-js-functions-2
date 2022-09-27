@@ -1,0 +1,110 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions 2</title>
+  </head>
+  <body>
+
+  <script>
+    // Functions in JS can be written in two forms. 
+    // Standard funtions and arrow functions. 
+
+    // Before we look at arrow functions let's review 
+    // standard functions. 
+
+    function hello() {
+      console.log('Hello World')
+    }
+
+    // Functions can also be assigned as part of an expression
+    // Notice the = here!
+
+    const world = function() {
+      console.log('Hello World')
+    }
+
+    // You can call both of these functions in the same way: 
+
+    hello()
+    world()
+
+    // You can add parameters and pass arguments and return
+    // values from these functions like this: 
+
+    function hello2(str) {
+      return `Hello ${str}`
+    }
+
+    const world2 = function () {
+      return `${str} World`
+    }
+
+    console.log(hello2('World'))
+    console.log(world2('Hello'))
+
+    // Study those examples until you are sure what they are
+    // doing! Dicuss them, test them, ask questions. Experiment
+    // with the code and look at the output in the browser. 
+
+
+
+    // An arrow function works the same as a standard function
+    // but is written differently.
+
+    // NOTE! There are a couple differences between standard 
+    // and arrow functions that don't affect this dicussion. 
+    // We will cover these things in the future. Consider 
+    // it an advanced topic. 
+
+    // In the second example above the function world and 
+    // wordl2 were written as an expression. Arrow functions 
+    // always written in this form! 
+
+    // Consider the calculateTip method as an arrow function
+
+    const calculateTip = (billAmount, tipPercent) => {
+      return billAmount * tipPercent / 100
+    }
+
+    // Looks alsmost the same! memorize this: () => {}
+    // Compare that to: function name() {}
+
+    // Protip! When writing a function always write the 
+    // whole syntax before filling in the details!
+    
+    // Start here first!
+    // const myFunc = () => {}
+    
+    // Then fill in the details: 
+    // const myFunc = (str) => { return `hello ${str}` }
+
+    // Writing the whole things reinforces the syntax and 
+    // points out where the function begins and ends while 
+    // guaranteeing that you don't miss something. 
+
+    // TODO: Convert the following to arrow functions
+
+    function helloWorld() {
+      console.log('Hello World')
+    }
+
+    function foo(bar) {
+      console.log(`foo ${bar}`)
+    }
+
+    function calculateArea(w, l) {
+      return w * l
+    }
+
+    helloWorld()
+    foo('cats own the internet!')
+    calculateArea(60, 70)
+
+    // Be sure to test your work!
+
+  </script>
+</body>
+</html>

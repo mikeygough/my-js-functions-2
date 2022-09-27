@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Anonymous Functions</title>
+</head>
+<body>
+	
+	<script>
+
+const x = 10
+const y = x * 5
+const z = Math.random()
+const a = Math.floor(y * z)
+
+for (let i = 0; i < 9; i += 1) {
+  console.log(i * 3)
+}
+
+function random(n) {
+  return Math.floor(Math.random() * n)
+}
+
+const random = (n) => {
+  return Math.floor(Math.random() * n)
+}
+
+
+console.log(Math.random())
+
+const are = (w, l) => {
+  return w * l
+}
+
+const radius = (d) => {
+  return d / 2
+}
+
+const pi = () => {
+  return 3.14
+}
+
+button.addEventListener('click', function() { 
+  console.log('Clicked!')  
+})
+
+setTimeout(function() {
+  console.log('1 sec later!')
+}, 1000)
+
+// 1000ms later: 1 sec later!
+
+
+	</script>
+</body>
+</html>

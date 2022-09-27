@@ -1,0 +1,67 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions 2</title>
+  </head>
+  <body>
+
+    <input id="bill-input" type="number" placeholder="bill">
+    <input id="tip-input" type="number" placeholder="tip %">
+    <div id="display"></div>
+
+  <script>
+    // This example is the solution to the example from the 
+    // previous class. Your goal is to convert it to arrow
+    // function. 
+
+    // Here are some DOM element references
+    const billInput = document.querySelector('#bill-input')
+    const tipInput = document.querySelector('#tip-input')
+    const display = document.querySelector('#display')
+
+    // Define some functions to do some work
+
+    function calculateTip(bill, tipPercent) {
+      const tip = bill * tipPercent / 100
+      return tip
+    }
+
+    // This function updates and displays the tip amount
+    // I added a couple new ideas here. 
+    // When you get a value from an input it is always a string. 
+    // The best way to convert a string to a number is parseFloat(someValue)
+    // or parseInt(someValue). 
+
+    function update(e) {
+      const billValue = parseFloat(billInput.value)
+      const tipValue = parseFloat(tipInput.value)
+      const tip = calculateTip(billValue, tipValue)
+      const total = billValue + tip
+      display.innerHTML = `Tip: ${tip} Total: ${tip}`
+    }
+
+    // Add some event listeners
+
+    billInput.addEventListener('input', update)
+    tipInput.addEventListener('input', update)
+
+    // TODO: After updating the functions above to arrow 
+    // functions test your work. 
+
+    // TODO: Add a new field to split the bill. This field
+    // should input an integer that represents the number 
+    // in your party. 
+    // 1. Make a reference to the new field
+    // 2. Add 'input' event listener to this new element. 
+    // You can handle this new event with the same upate 
+    // function used by the other inputs. 
+    // 3. The total bill and tip are displayed. Also display
+    // the amount each party would would pay when splitting 
+    // the bill. 
+
+  </script>
+</body>
+</html>
