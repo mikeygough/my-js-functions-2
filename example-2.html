@@ -1,67 +1,129 @@
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Functions 2</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions 2</title>
+
+    <style>
+      /* Your CSS rules go here */
+      #calculator {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #important-p-div {
+        text-align: center;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+    </style>
   </head>
   <body>
-
-    <input id="bill-input" type="number" placeholder="bill">
-    <input id="tip-input" type="number" placeholder="tip %">
+    <div id="calculator">
+      <input id="bill-input" type="number" placeholder="bill" />
+      <input id="tip-input" type="number" placeholder="tip %" />
+      <label for="group-size-input">Group size</label>
+      <input
+        id="group-size-input"
+        type="number"
+        placeholder="group size"
+        min="1"
+        value="1"
+      />
+    </div>
     <div id="display"></div>
 
-  <script>
-    // This example is the solution to the example from the 
-    // previous class. Your goal is to convert it to arrow
-    // function. 
+    <div id="important-p-div">
+      <p id="important-p">こんにちは　地球</p>
+      <input id="color-input" type="color" />
+      <input id="range-input" type="range" min="24" max="87" value="55.5"/>
+    </div>
 
-    // Here are some DOM element references
-    const billInput = document.querySelector('#bill-input')
-    const tipInput = document.querySelector('#tip-input')
-    const display = document.querySelector('#display')
+    <script>
+      // This example is the solution to the example from the
+      // previous class. Your goal is to convert it to arrow
+      // function.
 
-    // Define some functions to do some work
+      // Here are some DOM element references
+      const billInput = document.querySelector("#bill-input");
+      const tipInput = document.querySelector("#tip-input");
+      const display = document.querySelector("#display");
+      const groupSizeInput = document.querySelector("#group-size-input");
+      
+      const colorInput = document.querySelector("#color-input");
+      const rangeInput = document.querySelector("#range-input");
 
-    function calculateTip(bill, tipPercent) {
-      const tip = bill * tipPercent / 100
-      return tip
-    }
+      const importantP = document.querySelector("#important-p");
+      importantP.style.fontFamily = "Helvetica";
+      importantP.style.fontSize = "55.5px";
+      importantP.style.color = "black";
+      importantP.style.textAlign = "center";
 
-    // This function updates and displays the tip amount
-    // I added a couple new ideas here. 
-    // When you get a value from an input it is always a string. 
-    // The best way to convert a string to a number is parseFloat(someValue)
-    // or parseInt(someValue). 
+      const updateImportantP = (e) => {
+        const colorValue = colorInput.value;
+        const rangeValue = rangeInput.value;
+        importantP.style.color = colorValue;
+        importantP.style.fontSize = `${rangeValue}px`;
+      };
 
-    function update(e) {
-      const billValue = parseFloat(billInput.value)
-      const tipValue = parseFloat(tipInput.value)
-      const tip = calculateTip(billValue, tipValue)
-      const total = billValue + tip
-      display.innerHTML = `Tip: ${tip} Total: ${tip}`
-    }
+      colorInput.addEventListener("input", updateImportantP);
+      rangeInput.addEventListener("input", updateImportantP);
 
-    // Add some event listeners
+      // Define some functions to do some work
+      // function calculateTip(bill, tipPercent) {
+      //   const tip = bill * tipPercent / 100
+      //   return tip
+      // }
 
-    billInput.addEventListener('input', update)
-    tipInput.addEventListener('input', update)
+      const calculateTip = (bill, tipPercent) => (bill * tipPercent) / 100;
 
-    // TODO: After updating the functions above to arrow 
-    // functions test your work. 
+      // This function updates and displays the tip amount
+      // I added a couple new ideas here.
+      // When you get a value from an input it is always a string.
+      // The best way to convert a string to a number is parseFloat(someValue)
+      // or parseInt(someValue).
 
-    // TODO: Add a new field to split the bill. This field
-    // should input an integer that represents the number 
-    // in your party. 
-    // 1. Make a reference to the new field
-    // 2. Add 'input' event listener to this new element. 
-    // You can handle this new event with the same upate 
-    // function used by the other inputs. 
-    // 3. The total bill and tip are displayed. Also display
-    // the amount each party would would pay when splitting 
-    // the bill. 
+      // function update(e) {
+      //   const billValue = parseFloat(billInput.value)
+      //   const tipValue = parseFloat(tipInput.value)
+      //   const tip = calculateTip(billValue, tipValue)
+      //   const total = billValue + tip
+      //   display.innerHTML = `Tip: ${tip} Total: ${tip}`
+      // }
 
-  </script>
-</body>
+      const update = (e) => {
+        const billValue = parseFloat(billInput.value);
+        const tipValue = parseFloat(tipInput.value);
+        const groupSize = parseFloat(groupSizeInput.value);
+        const tip = calculateTip(billValue, tipValue);
+        const total = (billValue + tip).toFixed(2);
+        const perPerson = (total / groupSize).toFixed(2);
+        display.innerHTML = `Tip: $${tip} Total: $${total} Per Person: $${perPerson}`;
+      };
+
+      // Add some event listeners
+      billInput.addEventListener("input", update);
+      tipInput.addEventListener("input", update);
+      groupSizeInput.addEventListener("input", update);
+
+      // TODO: After updating the functions above to arrow
+      // functions test your work.
+
+      // TODO: Add a new field to split the bill. This field
+      // should input an integer that represents the number
+      // in your party.
+      // 1. Make a reference to the new field
+      // 2. Add 'input' event listener to this new element.
+      // You can handle this new event with the same update
+      // function used by the other inputs.
+      // 3. The total bill and tip are displayed. Also display
+      // the amount each party would would pay when splitting
+      // the bill.
+    </script>
+  </body>
 </html>
